@@ -40,7 +40,7 @@ class BusClient:
     
     def get_stops(self, from_stage: str = "") -> Dict:
         """
-        Get list of available stops.
+        Get list of available stops for a specific route.
         
         Args:
             from_stage: Optional filter for stops from a specific stage
@@ -50,3 +50,12 @@ class BusClient:
         """
         params = {"FromStage": from_stage}
         return self._make_request("GetTrackToStageName", params)
+    
+    def get_intercity_stops(self) -> Dict:
+        """
+        Get list of all intercity stops available on the Dublin Coach network.
+        
+        Returns:
+            Dictionary containing all intercity stop information
+        """
+        return self._make_request("GetStageName")

@@ -20,21 +20,24 @@ from bus_api import BusClient
 # Initialize the client
 client = BusClient()
 
+# Get all intercity stops
+all_stops = client.get_intercity_stops()
+
 # Get journeys between two stops
 journeys = client.get_journeys(
     from_stage="Dublin",
     to_stage="Limerick"
 )
 
-#Get list of available stops on a route
+# Get list of available stops on a specific route
 stops = client.get_stops(
     from_stage="Bunratty"
 )
 
-#Or use an Enum to get the stop names
+# Or use an Enum to get the stop names
 from bus_api.stops import DublinCoachStop
 stops = client.get_stops(
-    from_stage=DublinCoachStop.BUNRATTY
+    from_stage=DublinCoachStop.BUNRATTY.value
 )
 ```
 
